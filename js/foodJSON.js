@@ -1,6 +1,6 @@
 var foodList = [
 	//meat/seafood/tofu
-	{ value: "Lamb", score: 0.2 , image:null, category:"Meat/Seafood/Tofu"},
+	{ value: "Lamb", score: 0.2 , image:null, category:"Meat/Seafood/Tofu", emissions: 39.2},
 	{ value: "Beef", score: 3.25 , image:null, category:"Meat/Seafood/Tofu" },
 	{ value: "Pork", score: 6.975 , image:null, category:"Meat/Seafood/Tofu" },
 	{ value: "Salmon", score: 6.975 , image:null, category:"Meat/Seafood/Tofu" },

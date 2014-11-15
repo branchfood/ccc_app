@@ -247,8 +247,11 @@ jQuery(function ($) {
 							return parseFloat(score) + parseFloat(memo);
 						}, 0) : 0),
 					avgScore = (!!numTodos ? totalScore/numTodos : 0).toFixed(1);
-
+					var totalPossiblePoints = numTodos * 100;
+					$("#scoreNumber").text((totalScore * 10) + "/" + totalPossiblePoints);
 			g.refresh(avgScore);
+
+
 		},
 		destroy: function (e) {
 			this.todos.splice(this.indexFromEl(e.target), 1);

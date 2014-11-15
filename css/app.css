@@ -41,3 +41,7 @@ div.view {
 	display: inline-block;
 	/*text-align: center;*/
 }
+
+#scoreNumber {
+	text-align: center;
+}
