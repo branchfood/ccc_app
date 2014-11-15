@@ -39,32 +39,32 @@ jQuery(function ($) {
 		}
 	};
 
+	var g;
+
 	var App = {
 		init: function () {
+			g = new JustGage({
+				id: "gauge",
+				levelColors: [ "#FF0000", "#F9C802", "#A9D70B" ],
+				value: 0,
+				min: 0,
+				max: 10,
+				title: "Your Average Carbon Score"
+			});
+
 			this.todos = util.store('todos-jquery');
 			this.cacheElements();
 			this.bindEvents();
 
-			Router({
+			new Router({
 				'/:filter': function (filter) {
 					this.filter = filter;
 					this.render();
 				}.bind(this)
 			}).init('/all');
 
-  		var g = new JustGage({
-    		id: "gauge",
-    		value: 67,
-    		min: 0,
-    		max: 10,
-    		title: "Your Average Carbon Score"
-  		});
-
 			$('#new-todo').autocomplete({
-				lookup: foodList,
-				onSelect: function (suggestion) {
-        		alert('You selected: ' + suggestion.value + ', ' + suggestion.score);
-    			}
+				lookup: foodList
 			});
 		},
 		cacheElements: function () {
@@ -97,6 +97,7 @@ jQuery(function ($) {
 			this.$main.toggle(todos.length > 0);
 			this.$toggleAll.prop('checked', this.getActiveTodos().length === 0);
 			this.renderFooter();
+			this.updateScore();
 			this.$newTodo.focus();
 			util.store('todos-jquery', this.todos);
 		},
@@ -165,10 +166,9 @@ jQuery(function ($) {
 			var val = $input.val().trim();
 
 			var selectedFood = _.find(foodList, function(food){
-				return food.value == val;
-			});
-
-			console.log(selectedFood.score);
+						return food.value == val;
+					}),
+					score = (typeof(selectedFood) !== 'undefined' ? selectedFood.score.toFixed(1) : null);
 
 			if (e.which !== ENTER_KEY || !val) {
 				return;
@@ -177,8 +177,7 @@ jQuery(function ($) {
 			this.todos.push({
 				id: util.uuid(),
 				title: val,
-				score: selectedFood.score.toFixed(1),
-
+				score: score,
 				completed: false
 			});
 
@@ -224,6 +223,19 @@ jQuery(function ($) {
 			}
 
 			this.render();
+		},
+		updateScore: function(){
+			var todos = _.filter(this.getFilteredTodos(), function(todo){
+						return todo.score !== null;
+					}),
+					numTodos = todos.length,
+					totalScore = (!!numTodos ? _.reduce(todos, function(memo, todo){
+							var score = (todo.score !== null ? todo.score : 0);
+							return parseFloat(score) + parseFloat(memo);
+						}, 0) : 0),
+					avgScore = (!!numTodos ? totalScore/numTodos : 0).toFixed(1);
+
+			g.refresh(avgScore);
 		},
 		destroy: function (e) {
 			this.todos.splice(this.indexFromEl(e.target), 1);
