@@ -2,15 +2,15 @@
 <html lang="en" data-framework="jquery">
 	<head>
 		<meta charset="utf-8">
-		<title>jQuery • TodoMVC</title>
+		<title>CCC</title>
 		<link rel="stylesheet" href="bower_components/todomvc-common/base.css">
 		<link rel="stylesheet" href="css/app.css">
 	</head>
 	<body>
 		<section id="todoapp">
 			<header id="header">
-				<h1>todos</h1>
-				<input id="new-todo" placeholder="What needs to be done?" autofocus>
+				<h1>Shopping List</h1>
+				<input id="new-todo" placeholder="What food do you need?" autofocus>
 			</header>
 			<section id="main">
 				<input id="toggle-all" type="checkbox">
@@ -19,11 +19,6 @@
 			</section>
 			<footer id="footer"></footer>
 		</section>
-		<footer id="info">
-			<p>Double-click to edit a todo</p>
-			<p>Created by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
-		</footer>
 		<script id="todo-template" type="text/x-handlebars-template">
 			{{#this}}
 			<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
