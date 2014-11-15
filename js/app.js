@@ -56,7 +56,7 @@ jQuery(function ($) {
     		value: 67,
     		min: 0,
     		max: 100,
-    		title: "Visitors"
+    		title: "Your Average Carbon Score"
   		});
 
 		},
