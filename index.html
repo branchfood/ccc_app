@@ -30,6 +30,7 @@
 				<div class="view">
 					<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
 					<label>{{title}}</label>
+					<label>{{score}}</label>
 					<button class="destroy"></button>
 				</div>
 				<input class="edit" value="{{title}}">
@@ -55,6 +56,9 @@
 		<script src="bower_components/jquery/dist/jquery.js"></script>
 		<script src="bower_components/handlebars/handlebars.js"></script>
 		<script src="bower_components/director/build/director.js"></script>
+		<script src="js/jquery.autocomplete.js" type="text/javascript"></script>
+		<script src="js/foodJSON.js"></script>
+		<script src="bower_components/underscore/underscore.js"type="text/javascript"></script>
 		<script src="js/app.js"></script>
 		<script src="js/raphael.2.1.0.min.js"></script>
 		<script src="js/justgage.1.0.1.min.js"></script>

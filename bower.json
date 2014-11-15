@@ -4,6 +4,7 @@
     "todomvc-common": "~0.3.0",
     "jquery": "~2.1.1",
     "handlebars": "~2.0.0",
-    "director": "~1.2.2"
+    "director": "~1.2.2",
+    "underscore": "~1.7.0" 
   }
 }

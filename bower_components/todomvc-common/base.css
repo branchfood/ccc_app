@@ -244,7 +244,7 @@ label[for='toggle-all'] {
 	word-break: break-word;
 	padding: 15px 60px 15px 15px;
 	margin-left: 45px;
-	display: block;
+	display: inline-block;
 	line-height: 1.2;
 	-webkit-transition: color 0.4s;
 	transition: color 0.4s;

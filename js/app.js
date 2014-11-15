@@ -1,4 +1,5 @@
 /*global jQuery, Handlebars */
+
 jQuery(function ($) {
 	'use strict';
 
@@ -59,6 +60,12 @@ jQuery(function ($) {
     		title: "Your Average Carbon Score"
   		});
 
+			$('#new-todo').autocomplete({
+				lookup: foodList,
+				onSelect: function (suggestion) {
+        		alert('You selected: ' + suggestion.value + ', ' + suggestion.score);
+    			}
+			});
 		},
 		cacheElements: function () {
 			this.todoTemplate = Handlebars.compile($('#todo-template').html());
@@ -157,6 +164,12 @@ jQuery(function ($) {
 			var $input = $(e.target);
 			var val = $input.val().trim();
 
+			var selectedFood = _.find(foodList, function(food){
+				return food.value == val;
+			});
+
+			console.log(selectedFood.score);
+
 			if (e.which !== ENTER_KEY || !val) {
 				return;
 			}
@@ -164,6 +177,8 @@ jQuery(function ($) {
 			this.todos.push({
 				id: util.uuid(),
 				title: val,
+				score: selectedFood.score.toFixed(1),
+
 				completed: false
 			});
 
