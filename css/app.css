@@ -2,3 +2,8 @@
 #footer {
 	display: none;
 }
+
+#logo {
+  width: 60px;
+  padding-left: 6px;
+}
