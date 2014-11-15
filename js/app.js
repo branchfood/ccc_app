@@ -170,6 +170,17 @@ jQuery(function ($) {
 					}),
 					score = (typeof(selectedFood) !== 'undefined' ? selectedFood.score.toFixed(1) : null);
 
+			var redYellowGreenNull;
+			if (score == null){
+				redYellowGreenNull = "";
+			} else if (score < 6) {
+				redYellowGreenNull = "redClass";
+			} else if (score < 9) {
+				redYellowGreenNull = "yellowClass";
+			} else if (score < 10) {
+				redYellowGreenNull = "greenClass";
+			} 
+				
 			if (e.which !== ENTER_KEY || !val) {
 				return;
 			}
@@ -178,8 +189,10 @@ jQuery(function ($) {
 				id: util.uuid(),
 				title: val,
 				score: score,
-				completed: false
+				completed: false,
+				colorClass: redYellowGreenNull
 			});
+			// console.log(selectedFood.colorClass);
 
 			$input.val('');
 

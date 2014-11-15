@@ -30,7 +30,7 @@
 				<div class="view">
 					<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
 					<label>{{title}}</label>
-					<label>{{score}}</label>
+					<div id="scoreLabelDiv"><p id="scoreLabel" class="{{colorClass}}">{{score}}</p></div>
 					<button class="destroy"></button>
 				</div>
 				<input class="edit" value="{{title}}">

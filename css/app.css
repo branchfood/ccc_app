@@ -7,3 +7,37 @@
   width: 60px;
   padding-left: 6px;
 }
+
+.redClass, .yellowClass, .greenClass{
+	border-radius: 50%;
+	text-align: center;
+}
+.redClass {
+	background: #e23528;
+}
+
+.yellowClass {
+	background: #f5be1f;
+
+}
+
+.greenClass {
+	background: #98bc41;
+}
+
+div.view {
+	width: 400px;
+}
+
+#scoreLabelDiv {
+	display: inline-block;
+	height: 70px;
+	width: 70px;
+}
+
+#scoreLabel {
+	line-height: 70px;
+	width: 70px;
+	display: inline-block;
+	/*text-align: center;*/
+}

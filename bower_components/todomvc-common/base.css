@@ -33,6 +33,14 @@ body {
 	font-smoothing: antialiased;
 }
 
+.redClass {
+	background: red;
+}
+
+.greenClass {
+	background: green;
+}
+
 button,
 input[type="checkbox"] {
   outline: none;
