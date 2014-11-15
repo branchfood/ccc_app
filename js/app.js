@@ -300,7 +300,7 @@ jQuery(function ($) {
 						}, 0) : 0),
 					avgScore = (!!numTodos ? totalScore/numTodos : 0).toFixed(1);
 					var totalPossiblePoints = numTodos * 100;
-					$("#scoreNumber").text((totalScore * 10) + "/" + totalPossiblePoints);
+					$("#scoreNumber").text(totalScore * 100 + " Points");
 			g.refresh(avgScore);
 
 
