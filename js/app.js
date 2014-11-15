@@ -90,6 +90,33 @@ jQuery(function ($) {
 			list.on('keyup', '.edit', this.editKeyup.bind(this));
 			list.on('focusout', '.edit', this.update.bind(this));
 			list.on('click', '.destroy', this.destroy.bind(this));
+			list.on('mouseover', '.item', this.mouseOver);
+		},
+		mouseOver: function (e) {
+			var $food = $(this),
+					foodName = $food.text(),
+					suggestions = App.suggestFood(foodName);
+
+			var content = $('<table>');
+
+			if(!suggestions.length) return;
+
+			_.each(suggestions, function(food){
+				var $tr = $('<tr>'),
+						$a = $('<a href="#" onclick="recoClick(this)">').addClass('reco-item').html(food.value);
+
+				$tr.append($('<td>').append($a));
+				$tr.append($('<td class="greenClass">').text(food.scoreDiff));
+
+				content.append($tr);
+      });
+
+			$food.webuiPopover('destroy').webuiPopover({
+				content: content,
+				placement: 'right',
+				title: 'Recommendations for ' + foodName,
+				trigger: 'hover'
+			}).webuiPopover('show');
 		},
 		render: function () {
 			var todos = this.getFilteredTodos();
@@ -179,8 +206,8 @@ jQuery(function ($) {
 				redYellowGreenNull = "yellowClass";
 			} else if (score < 10) {
 				redYellowGreenNull = "greenClass";
-			} 
-				
+			}
+
 			if (e.which !== ENTER_KEY || !val) {
 				return;
 			}
@@ -216,6 +243,31 @@ jQuery(function ($) {
 				$(e.target).data('abort', true).blur();
 			}
 		},
+		suggestFood: function(name) {
+      // find food by name
+      var suggestFood = _.find(foodList, function(food){
+        return food.value == name;
+      });
+
+      //find the selected food category
+      var categoryFoods = _.filter(foodList, function(food){
+        return suggestFood.category == food.category && food.value != suggestFood.value && food.score > suggestFood.score;
+      });
+
+      //sample 3
+      categoryFoods = _.sample(categoryFoods, 3);
+
+      //sort by scores
+      categoryFoods = _.sortBy(categoryFoods, function(food){
+				return food.score;
+      }).reverse();
+
+      _.each(categoryFoods, function(food){
+				food.scoreDiff = '+' + (food.score - suggestFood.score).toFixed(1);
+      });
+
+      return categoryFoods;
+    },
 		update: function (e) {
 			var el = e.target;
 			var $el = $(el);
@@ -261,3 +313,14 @@ jQuery(function ($) {
 
 	App.init();
 });
+
+function recoClick(obj){
+	var $food = $(obj),
+			foodName = $food.text();
+
+	var e = jQuery.Event("keyup");
+	e.which = 13;
+	$('#new-todo').val(foodName).trigger(e);
+	return false;
+}
+

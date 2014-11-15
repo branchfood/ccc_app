@@ -29,13 +29,13 @@ div.view {
 	width: 400px;
 }
 
-#scoreLabelDiv {
+.scoreLabelDiv {
 	display: inline-block;
 	height: 70px;
 	width: 70px;
 }
 
-#scoreLabel {
+.scoreLabel {
 	line-height: 70px;
 	width: 70px;
 	display: inline-block;
@@ -44,4 +44,7 @@ div.view {
 
 #scoreNumber {
 	text-align: center;
+}
+.webui-popover-content table {
+  width: 100%;
 }
