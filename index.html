@@ -22,6 +22,7 @@
 			<div id="gauge" class="200x160px"></div>
 
 			<hr></hr>
+
 			<div id="pointsNumber"></div>
 			<div id="scoreNumber"></div>
 
@@ -35,6 +36,7 @@
 			<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
 				<div class="view">
 					<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
+
 					<label class="item">{{title}}</label>
 					{{#if score}}
 						<div class="scoreLabelDiv"><p class="scoreLabel {{colorClass}}">{{score}}</p></div>
