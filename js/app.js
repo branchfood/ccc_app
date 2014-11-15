@@ -106,7 +106,7 @@ jQuery(function ($) {
 						$a = $('<a href="#" onclick="recoClick(this)">').addClass('reco-item').html(food.value);
 
 				$tr.append($('<td>').append($a));
-				$tr.append($('<td class="greenClass">').text(food.scoreDiff));
+				$tr.append($('<td class="greenClass squarePopover">').text(food.scoreDiff));
 
 				content.append($tr);
       });
@@ -300,7 +300,8 @@ jQuery(function ($) {
 						}, 0) : 0),
 					avgScore = (!!numTodos ? totalScore/numTodos : 0).toFixed(1);
 					var totalPossiblePoints = numTodos * 100;
-					$("#scoreNumber").text(totalScore * 100 + " Points");
+					$("#pointsNumber").text(totalScore * 100);
+					$("#scoreNumber").text(" Total Reward Points");
 			g.refresh(avgScore);
 
 
