@@ -24,8 +24,8 @@
 			<hr></hr>
 			<div id="pointsNumber"></div>
 			<div id="scoreNumber"></div>
-	
-			<br/>			
+
+			<br/>
 			<img id ="logo" src="images/logo.png">
 
 			<footer id="footer"></footer>
@@ -36,7 +36,9 @@
 				<div class="view">
 					<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
 					<label class="item">{{title}}</label>
-					<div class="scoreLabelDiv"><p class="scoreLabel {{colorClass}}">{{score}}</p></div>
+					{{#if score}}
+						<div class="scoreLabelDiv"><p class="scoreLabel {{colorClass}}">{{score}}</p></div>
+					{{/if}}
 					<button class="destroy"></button>
 				</div>
 				<input class="edit" value="{{title}}">

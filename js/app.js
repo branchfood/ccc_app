@@ -249,6 +249,10 @@ jQuery(function ($) {
         return food.value == name;
       });
 
+      if(typeof(suggestFood) == 'undefined'){
+				return [];
+      }
+
       //find the selected food category
       var categoryFoods = _.filter(foodList, function(food){
         return suggestFood.category == food.category && food.value != suggestFood.value && food.score > suggestFood.score;
@@ -300,7 +304,7 @@ jQuery(function ($) {
 						}, 0) : 0),
 					avgScore = (!!numTodos ? totalScore/numTodos : 0).toFixed(1);
 					var totalPossiblePoints = numTodos * 100;
-					$("#pointsNumber").text(totalScore * 100);
+					$("#pointsNumber").text(parseInt(totalScore * 100, 10));
 					$("#scoreNumber").text(" Total Reward Points");
 			g.refresh(avgScore);
 

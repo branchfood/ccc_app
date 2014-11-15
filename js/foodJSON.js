@@ -14,9 +14,8 @@ var foodList = [
 	{ value: "Eggs", score: 8.8 , image:null, category:"Dairy" },
 	{ value: "Yogurt", score: 9.45 , image:null, category:"Dairy" },
 	{ value: "Milk (2%)", score: 8.8 , image:null, category:"Dairy" },
-	{ value: "Eggs", score: 8.8 , image:null, category:"Dairy" },
 
-	//produce 
+	//produce
 	{ value: "Potatoes", score: 9.275 , image:null, category:"Produce" },
 	{ value: "Rice", score: 9.325 , image:null, category:"Produce" },
 	{ value: "Peanut Butter", score: 9.375 , image:null, category:"Produce" },
@@ -25,5 +24,5 @@ var foodList = [
 	{ value: "Dry Beans", score: 9.5 , image:null, category:"Produce" },
 	{ value: "Tomatoes", score: 9.725 , image:null, category:"Produce" },
 	{ value: "Lentils", score: 9.775 , image:null, category:"Produce" }
-	
-]
+
+];
