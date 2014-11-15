@@ -55,7 +55,7 @@ jQuery(function ($) {
     		id: "gauge",
     		value: 67,
     		min: 0,
-    		max: 100,
+    		max: 10,
     		title: "Your Average Carbon Score"
   		});
 
